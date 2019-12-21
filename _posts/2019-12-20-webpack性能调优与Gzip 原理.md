@@ -4,7 +4,7 @@ title:      webpack 性能调优与 Gzip 原理
 subtitle:   如何从webpack着手性能优化
 date:       2018-12-20
 author:     Ruiyoung
-header-img: img/post-bg-BJJ.jpg
+header-img: img/post-bg-debug.png
 catalog: true
 tags:
     - 前端性能优化
