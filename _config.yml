@@ -99,16 +99,16 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "WY",
-        href: "http://zhengwuyang.com"
+        title: "MDN",
+        href: "https://developer.mozilla.org/zh-CN/"
     },{
-        title: "简书·BY",
-        href: "https://www.jianshu.com/u/e71990ada2fd"
+        title: "网道JS",
+        href: "https://wangdoc.com/javascript/"
     },{
         title: "Apple",
         href: "https://apple.com"
     },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        title: "微信读书",
+        href: "https://weread.qq.com/"
     }
 ]
