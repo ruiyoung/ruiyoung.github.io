@@ -4,7 +4,7 @@ title:      javaScript学习笔记
 subtitle:   JSON
 date:       2017-07-05
 author:     Ruiyoung
-header-img: img/post-bg-debug.png
+header-img: img/post-bg-js-version.jpg
 catalog: true
 tags:
     - javaScript

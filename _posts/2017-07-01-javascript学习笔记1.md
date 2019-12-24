@@ -4,7 +4,7 @@ title:      javaScript学习笔记
 subtitle:   函数
 date:       2017-07-01
 author:     Ruiyoung
-header-img: img/post-bg-debug.png
+header-img: img/post-bg-js-version.jpg
 catalog: true
 tags:
     - javaScript
