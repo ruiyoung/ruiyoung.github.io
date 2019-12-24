@@ -21,12 +21,12 @@ tags:
 - 数据由逗号分隔  
 - 花括号保存对象  
 - 方括号保存数组  
-- JSON 值可以是：
-&emsp;&emsp;数字（整数或浮点数）
-&emsp;&emsp;字符串（在双引号中） 
-&emsp;&emsp;逻辑值（true 或 false）  
-&emsp;&emsp;数组（在方括号中）  
-&emsp;&emsp;对象（在花括号中）  
+- JSON 值可以是：  
+&emsp;&emsp;数字（整数或浮点数）  
+&emsp;&emsp;字符串（在双引号中）   
+&emsp;&emsp;逻辑值（true 或 false）   
+&emsp;&emsp;数组（在方括号中）   
+&emsp;&emsp;对象（在花括号中）   
 &emsp;&emsp;null  
 
 ### JSON 的解析和序列化
