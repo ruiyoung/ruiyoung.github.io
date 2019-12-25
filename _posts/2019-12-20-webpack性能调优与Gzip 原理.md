@@ -8,7 +8,6 @@ header-img: img/post-bg-debug.png
 catalog: true
 tags:
     - 前端性能优化
-    - webpack
 ---
 ##### 对于 DNS 解析和 TCP 连接两个步骤，我们前端可以做的努力非常有限。相比之下，HTTP 连接这一层面的优化才是我们网络优化的核心。
 ###### HTTP 优化有两个大的方向：
