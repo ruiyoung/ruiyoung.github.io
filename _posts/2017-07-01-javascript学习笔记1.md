@@ -34,13 +34,12 @@ alert(num);//这里输出100而不是200
 ### 函数创建方式  
 - 普通声明方式 
 ```
-    function fun (m,n) {
-        alert(m + n)
-    }
-    fun(3,2)
+function fun (m,n) {
+    alert(m + n)
+}
+fun(3,2)
 ```  
 - 使用变量声明  
-
 ```
 var fun = function(m, n) {
     alert(m + n)
@@ -55,6 +54,7 @@ fun(3, 2)
 
 #### 函数的内部属性     
 - arguments  
+
 ```
 // arguments.length检测函数的参数个数
 function sum() {
@@ -67,7 +67,9 @@ function sum() {
 }
 alert(sum(12,3,5,10,5,3))
 ```
+
 - this  
+
 ```
 //在函数外部使用this,this就指的是window对象
 //alert(this)
@@ -109,7 +111,9 @@ div1.onclick = function(){
     alert( this.innerHTML); //this指向的是div元素
 };
 ```  
+
 ### 函数的属性和方法  
+
 ```
 //length:当前函数希望接受的命名参数的个数
 function test(num1,num2,num3) {
@@ -149,9 +153,11 @@ function sayColor() {
 // sayColor.call(window);
 sayColor.call(o)
 ```
-### 执行环境及作用域
+
+### 执行环境及作用域  
 - 执行环境定义了变量或函数有权访问其他数据。  
-- 全局执行环境是最外围的执行环境，在web浏览器中，全局执行环境是window对象，因此，所有的全局变量的函数都是作为window的属性和方法创建的。
+- 全局执行环境是最外围的执行环境，在web浏览器中，全局执行环境是window对象，因此，所有的全局变量的函数都是作为window的属性和方法创建的。  
+
 ```
 var name = "张三";      //定义全局变量
 alert(name)     
@@ -189,7 +195,8 @@ function setName(){
 setName()
 // alert(setYear()) 
 alert(setName());
-```
+```  
+
 - 内部环境可以访问所有的外部环境，但是外部环境不能访问内部环境中的任何变量和函数。  
 - 在变量的查询中，访问局部变量要比全局变量快。  
 
