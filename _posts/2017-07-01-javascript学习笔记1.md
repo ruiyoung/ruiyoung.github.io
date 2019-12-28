@@ -20,7 +20,83 @@ tags:
 **3.在变量复制时候，基本类型复制的是值本身，而引用类型复制的是地址**  
 
 **4.函数的参数都是按值传递的**
+### 函数创建方式  
+- 普通声明方式 
+```
+    function fun (m,n) {
+        alert(m + n)
+    }
+    fun(3,2)
+```  
+- 使用变量声明  
 
+```
+    var fun = function(m, n) {
+        alert(m + n)
+    }
+    fun(3, 2)
+```
+- 使用构造函数 (了解) 
+```
+    var fun = new Function('m', 'n', 'alert(m+n)')
+    fun(3, 2)
+```
+#### 函数的内部属性     
+- arguments  
+```
+    // arguments.length检测函数的参数个数
+    function sum() {
+        //alert(arguments.length);
+        var result=0;
+        for(var i=0;i<arguments.length;i++){
+            result+=arguments[i]
+        }
+        return result
+    }
+    alert(sum(12,3,5,10,5,3))
+```
+- this  
+```
+    //在函数外部使用this,this就指的是window对象
+    //alert(this)
+
+    //全局变量可以看做window对象的属性
+    var x=1;
+    alert(window.x)
+    alert(this.x)
+
+    //函数内部调用
+    function test(){
+        var x=0;
+        alert(x) //这里的x为0
+        alert(this.x); //这里的x为1
+        alert(this)
+    }
+    //test()
+    //用new来调用，那么绑定的将是新创建的对象
+    function test2(){ 
+　　　　this.x = 100; 
+　　} 
+    var obj = new test2();
+    //alert(x); //这里的x为1
+    //alert(obj.x);//这里的x为100
+
+    //作为某个对象的方法调用
+    function test3(){ 
+　　　　alert(this.x); 
+　　} 
+    var objo={}; 
+    objo.x = 1000; 
+    objo.m = test3; 
+    //alert(x);
+    //objo.m(); //1000
+
+    //事件监听函数中的this
+    var div1 = document.getElementById('div1');
+    div1.onclick = function(){
+        alert( this.innerHTML); //this指向的是div元素
+    };
+```
 ### 执行环境及作用域
 - 执行环境定义了变量或函数有权访问其他数据。  
 - 全局执行环境是最外围的执行环境，在web浏览器中，全局执行环境是window对象，因此，所有的全局变量的函数都是作为window的属性和方法创建的。  
