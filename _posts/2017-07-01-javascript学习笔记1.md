@@ -31,71 +31,112 @@ tags:
 - 使用变量声明  
 
 ```
-    var fun = function(m, n) {
-        alert(m + n)
-    }
-    fun(3, 2)
+var fun = function(m, n) {
+    alert(m + n)
+}
+fun(3, 2)
 ```
 - 使用构造函数 (了解) 
 ```
-    var fun = new Function('m', 'n', 'alert(m+n)')
-    fun(3, 2)
-```
+var fun = new Function('m', 'n', 'alert(m+n)')
+fun(3, 2)
+```  
+
 #### 函数的内部属性     
 - arguments  
 ```
-    // arguments.length检测函数的参数个数
-    function sum() {
-        //alert(arguments.length);
-        var result=0;
-        for(var i=0;i<arguments.length;i++){
-            result+=arguments[i]
-        }
-        return result
+// arguments.length检测函数的参数个数
+function sum() {
+    //alert(arguments.length);
+    var result=0;
+    for(var i=0;i<arguments.length;i++){
+        result+=arguments[i]
     }
-    alert(sum(12,3,5,10,5,3))
+    return result
+}
+alert(sum(12,3,5,10,5,3))
 ```
 - this  
 ```
-    //在函数外部使用this,this就指的是window对象
-    //alert(this)
+//在函数外部使用this,this就指的是window对象
+//alert(this)
 
-    //全局变量可以看做window对象的属性
-    var x=1;
-    alert(window.x)
-    alert(this.x)
+//全局变量可以看做window对象的属性
+var x=1;
+alert(window.x)
+alert(this.x)
 
-    //函数内部调用
-    function test(){
-        var x=0;
-        alert(x) //这里的x为0
-        alert(this.x); //这里的x为1
-        alert(this)
-    }
-    //test()
-    //用new来调用，那么绑定的将是新创建的对象
-    function test2(){ 
-　　　　this.x = 100; 
-　　} 
-    var obj = new test2();
-    //alert(x); //这里的x为1
-    //alert(obj.x);//这里的x为100
+//函数内部调用
+function test(){
+    var x=0;
+    alert(x) //这里的x为0
+    alert(this.x); //这里的x为1
+    alert(this)
+}
+//test()
+//用new来调用，那么绑定的将是新创建的对象
+function test2(){ 
+　　this.x = 100; 
+} 
+var obj = new test2();
+//alert(x); //这里的x为1
+//alert(obj.x);//这里的x为100
 
-    //作为某个对象的方法调用
-    function test3(){ 
-　　　　alert(this.x); 
-　　} 
-    var objo={}; 
-    objo.x = 1000; 
-    objo.m = test3; 
-    //alert(x);
-    //objo.m(); //1000
+//作为某个对象的方法调用
+function test3(){ 
+　　alert(this.x); 
+}
+var objo={}; 
+objo.x = 1000; 
+objo.m = test3; 
+//alert(x);
+//objo.m(); //1000
 
-    //事件监听函数中的this
-    var div1 = document.getElementById('div1');
-    div1.onclick = function(){
-        alert( this.innerHTML); //this指向的是div元素
-    };
+//事件监听函数中的this
+var div1 = document.getElementById('div1');
+div1.onclick = function(){
+    alert( this.innerHTML); //this指向的是div元素
+};
+```  
+### 函数的属性和方法  
+```
+//length:当前函数希望接受的命名参数的个数
+function test(num1,num2,num3) {
+        alert(test.length);
+    alert(arguments.length) //注意arguments是实际传人的参数
+}
+//test(10,20,10,35)
+
+
+function sum(num1, num2) {
+    return num1 + num2;
+}
+function applySum1(num1, num2) {
+    return sum.apply(this, [num1, num2]);
+}
+function applySum2(num1, num2) {
+    return sum.apply(this, arguments);//传入arguments对象 
+}
+// alert(sum(10,20))
+// alert(applySum1(10,20))
+// alert(applySum2(10,20))
+
+//对于apply、call二者而言，作用完全一样，只是接受参数的方式不太一样。　
+function callSum(num1, num2) {
+    return sum.call(this, num1, num2); //传入的是具体的参数
+}
+//alert(callSum(30, 20));
+
+//扩充函数作用域
+var color = "red";
+var o = {color: "blue"};
+function sayColor() {
+    alert(this.color);
+}
+// sayColor();
+// sayColor.call(this);
+// sayColor.call(window);
+sayColor.call(o)
 ```
 ### 执行环境及作用域
 - 执行环境定义了变量或函数有权访问其他数据。  
