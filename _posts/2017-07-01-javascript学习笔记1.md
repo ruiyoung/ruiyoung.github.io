@@ -20,6 +20,17 @@ tags:
 **3.在变量复制时候，基本类型复制的是值本身，而引用类型复制的是地址**  
 
 **4.函数的参数都是按值传递的**
+```
+//函数的参数都是按值传递的
+var num = 100; 
+function box(num){ 
+    num+=100;      
+    return num;        
+} 
+var result = box(num); 
+alert(result);
+alert(num);//这里输出100而不是200
+```
 ### 函数创建方式  
 - 普通声明方式 
 ```
@@ -140,8 +151,45 @@ sayColor.call(o)
 ```
 ### 执行环境及作用域
 - 执行环境定义了变量或函数有权访问其他数据。  
-- 全局执行环境是最外围的执行环境，在web浏览器中，全局执行环境是window对象，因此，所有的全局变量的函数都是作为window的属性和方法创建的。  
-- 变量没有在函数内声明或者声明的时候没有带var就是全局变量，拥有全局作用域,window对象的所有属性拥有全局作用域；在代码任何地方都可以访问，函数内部声明并且以var修饰的变量就是局部变量，只能在函数体内使用，函数的参数虽然没有使用var但仍然是局部变量。  
+- 全局执行环境是最外围的执行环境，在web浏览器中，全局执行环境是window对象，因此，所有的全局变量的函数都是作为window的属性和方法创建的。
+```
+var name = "张三";      //定义全局变量
+alert(name)     
+alert(window.name);    //全局变量，最外围，属于window属性
+
+function setName(){      
+    return "李四";   
+} 
+alert(setName());
+alert(window.setName()); //全局函数，最外围，属于window方法 
+```  
+- 变量没有在函数内声明或者声明的时候没有带var就是全局变量，拥有全局作用域,window对象的所有属性拥有全局作用域；在代码任何地方都可以访问，函数内部声明并且以var修饰的变量就是局部变量，只能在函数体内使用，函数的参数虽然没有使用var但仍然是局部变量。
+```
+var name = "张三";      //定义全局变量
+function setName(){  
+    //var name= "李四";    //定义局部变量
+    name="李四";    //去掉var变成了全局变量 
+    //alert(name);
+}
+setName()
+alert(name);
+
+
+function setName(){ 
+    var name="张三"  
+    function setYear(){ //setYear()方法的作用域在setName()内 
+    var age=21;
+    var str=name+age+'岁了' 
+    return str;
+    }  
+    //alert(setYear())  
+    //alert(age)
+    return setYear()
+}
+setName()
+// alert(setYear()) 
+alert(setName());
+```
 - 内部环境可以访问所有的外部环境，但是外部环境不能访问内部环境中的任何变量和函数。  
 - 在变量的查询中，访问局部变量要比全局变量快。  
 
