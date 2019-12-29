@@ -169,7 +169,8 @@ function setName(){
 alert(setName());
 alert(window.setName()); //全局函数，最外围，属于window方法 
 ```  
-- 变量没有在函数内声明或者声明的时候没有带var就是全局变量，拥有全局作用域,window对象的所有属性拥有全局作用域；在代码任何地方都可以访问，函数内部声明并且以var修饰的变量就是局部变量，只能在函数体内使用，函数的参数虽然没有使用var但仍然是局部变量。  
+- 变量没有在函数内声明或者声明的时候没有带var就是全局变量，拥有全局作用域,window对象的所有属性拥有全局作用域；在代码任何地方都可以访问，函数内部声明并且以var修饰的变量就是局部变量，只能在函数体内使用，函数的参数虽然没有使用var但仍然是局部变量。 
+
 ```
 var name = "张三";      //定义全局变量
 function setName(){  
@@ -179,7 +180,6 @@ function setName(){
 }
 setName()
 alert(name);
-
 
 function setName(){ 
     var name="张三"  
@@ -195,6 +195,7 @@ function setName(){
 setName()
 // alert(setYear()) 
 alert(setName());
+
 ```  
 
 - 内部环境可以访问所有的外部环境，但是外部环境不能访问内部环境中的任何变量和函数。  
