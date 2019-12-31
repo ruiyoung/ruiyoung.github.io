@@ -94,19 +94,19 @@ tags:
 
 #### RegExp 对象属性  
 
-- **global RegExp 对象是否具有标志 g。**   
+- **global RegExp 对象是否具有标志 g。**  
 &emsp;&emsp;语法：RegExpObject.global  
 &emsp;&emsp;如果 g 标志被设置，则该属性为 true，否则为 false。  
-- **ignoreCase RegExp 对象是否具有标志 i。**   
+- **ignoreCase RegExp 对象是否具有标志 i。**  
 &emsp;&emsp;语法：RegExpObject.ignoreCase  
 &emsp;&emsp;如果设置了 "i" 标志，则返回 true，否则返回 false。  
-- **multiline RegExp 对象是否具有标志 m。**   
+- **multiline RegExp 对象是否具有标志 m。**  
 &emsp;&emsp;语法：RegExpObject.multiline  
 &emsp;&emsp;如果 m 标志被设置，则该属性为 true，否则为 false。  
-- **source 正则表达式的源文本。**     
+- **source 正则表达式的源文本。**  
 &emsp;&emsp;语法：RegExpObject.source  
 &emsp;&emsp;source 属性用于返回模式匹配所用的文本。该文本不包括正则表达式直接量使用的定界符，也不包括标志 g、i、m。  
-- **lastIndex 一个整数，标示开始下一次匹配的字符位置。**    
+- **lastIndex 一个整数，标示开始下一次匹配的字符位置。**  
 
 
 
