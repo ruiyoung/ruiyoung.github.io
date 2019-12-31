@@ -10,38 +10,46 @@ tags:
     - javaScript
 ---
 ### 前言  
+
 > AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）  
 > AJAX 可以通过在后台与服务器进行少量数据交换，使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。(传统的网页（不使用 AJAX）如果需要更新内容，必需重载整个网页面。)  
 
 ### 基本用法  
+
 #### 1. 创建 XMLHttpRequest 对象  
+
 - 语法：var myAjax=new XMLHttpRequest();  
 - 老版本的 IE（IE5 和 IE6）使用 ActiveX 对象 ： var myAjax=new ActiveXObject("Microsoft.XMLHTTP");  
-#### 2. 向服务器发送请求:使用open() 和 send() 方法：
+
+#### 2. 向服务器发送请求:使用open() 和 send() 方法
+
 - open(method,url,async):规定请求的类型、URL 以及是否异步处理请求。  
-&emsp;&emsp;method：请求的类型；GET 或 POST     
-&emsp;&emsp;url：文件在服务器上的位置   
+&emsp;&emsp;method：请求的类型；GET 或 POST  
+&emsp;&emsp;url：文件在服务器上的位置
 &emsp;&emsp;async：true（异步）或 false（同步）  
 - send(string):string：仅用于 POST 请求  
 
 #### 3. 服务器响应  
+
 > 如需获得来自服务器的响应，请使用 XMLHttpRequest 对象的 responseText 或 responseXML 属性。 
-- responseText 属性:responseText 属性返回字符串形式的响应  
+
+- responseText 属性:responseText属性返回字符串形式的响应  
 - responseXML 属性:如果来自服务器的响应是 XML，而且需要作为 XML 对象进行解析，请使用 responseXML 属性  
 
 #### 4. onreadystatechange 事件  
+
 > 当请求被发送到服务器时，我们需要执行一些基于响应的任务。  
 > 每当 readyState 改变时，就会触发 onreadystatechange 事件。  
 
 - onreadystatechange:存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。  
-- readyState:存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。 
+- readyState:存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。  
 &emsp;&emsp;0: 请求未初始化  
 &emsp;&emsp;1: 服务器连接已建立  
 &emsp;&emsp;2: 请求已接收  
 &emsp;&emsp;3: 请求处理中  
-&emsp;&emsp;4: 请求已完成，且响应已就绪   
+&emsp;&emsp;4: 请求已完成，且响应已就绪  
 
-```
+```{.javaScript}
 // 1.创建Ajax对象
 var myajax=new XMLHttpRequest()
 //alert(myajax) //IE6及其以下版本不支持
@@ -62,9 +70,11 @@ myajax.onreadystatechange=function(){
         }
     }
 }
-``` 
+```  
+
 #### 封装思路  
-```
+
+```{.javaScript}
 function ajax(url,funSucc,fnFaild){
 
 	var xhr=new XMLHttpRequest();
@@ -91,7 +101,8 @@ function ajax(url,funSucc,fnFaild){
 	}
 
 }
-```
+```  
+
 <table>
     <caption>
         XMLHttpRequest 对象 status 和statusText 属性对照表

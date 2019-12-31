@@ -9,53 +9,62 @@ catalog: true
 tags:
     - javaScript
 ---
-### 基本类型和引用类型
+### 基本类型和引用类型  
+
 **1. 基本类型值有：undefined，NUll，Boolean，Number和String**  
-这些类型分别在内存中占有固定的大小空间，例如：数值型在内存中占有八个字节，布尔值只占有一个字节...... 
+这些类型分别在内存中占有固定的大小空间，例如：数值型在内存中占有八个字节，布尔值只占有一个字节......
 他们的值保存在栈空间，我们通过按值来访问的。
 
 **2.引用类型：对象、数组、函数**  
 引用类型内存中占有的空间不固定，但是内存地址大小是固定的，因此存储的实际上是数据的内存地址。
 
 **3.在变量复制时候，基本类型复制的是值本身，而引用类型复制的是地址**  
+**4.函数的参数都是按值传递的**  
 
-**4.函数的参数都是按值传递的**
-```
+```{.javaScript}
 //函数的参数都是按值传递的
-var num = 100; 
-function box(num){ 
-    num+=100;      
-    return num;        
-} 
-var result = box(num); 
+var num = 100;  
+function box(num){  
+    num+=100;  
+    return num;  
+}  
+var result = box(num);  
 alert(result);
 alert(num);//这里输出100而不是200
-```
+```  
+
 ### 函数创建方式  
-- 普通声明方式 
-```
+
+- 普通声明方式  
+
+```{.javaScript}
 function fun (m,n) {
     alert(m + n)
 }
 fun(3,2)
 ```  
+
 - 使用变量声明  
-```
+
+```{.javaScript}
 var fun = function(m, n) {
     alert(m + n)
 }
 fun(3, 2)
 ```
-- 使用构造函数 (了解) 
-```
+
+- 使用构造函数 (了解)  
+
+```{.javaScript}
 var fun = new Function('m', 'n', 'alert(m+n)')
 fun(3, 2)
 ```  
 
-#### 函数的内部属性     
+#### 函数的内部属性  
+
 - arguments  
 
-```
+```{.javaScript}
 // arguments.length检测函数的参数个数
 function sum() {
     //alert(arguments.length);
@@ -70,7 +79,7 @@ alert(sum(12,3,5,10,5,3))
 
 - this  
 
-```
+```{.javaScript}
 //在函数外部使用this,this就指的是window对象
 //alert(this)
 
@@ -88,20 +97,20 @@ function test(){
 }
 //test()
 //用new来调用，那么绑定的将是新创建的对象
-function test2(){ 
-　　this.x = 100; 
-} 
+function test2(){  
+　　this.x = 100;  
+}  
 var obj = new test2();
 //alert(x); //这里的x为1
 //alert(obj.x);//这里的x为100
 
 //作为某个对象的方法调用
-function test3(){ 
-　　alert(this.x); 
+function test3(){  
+　　alert(this.x);  
 }
-var objo={}; 
-objo.x = 1000; 
-objo.m = test3; 
+var objo={};  
+objo.x = 1000;  
+objo.m = test3;  
 //alert(x);
 //objo.m(); //1000
 
@@ -114,7 +123,7 @@ div1.onclick = function(){
 
 ### 函数的属性和方法  
 
-```
+```{.javaScript}
 //length:当前函数希望接受的命名参数的个数
 function test(num1,num2,num3) {
         alert(test.length);
@@ -155,23 +164,26 @@ sayColor.call(o)
 ```
 
 ### 执行环境及作用域  
+
 - 执行环境定义了变量或函数有权访问其他数据。  
 - 全局执行环境是最外围的执行环境，在web浏览器中，全局执行环境是window对象，因此，所有的全局变量的函数都是作为window的属性和方法创建的。  
 
-```
+```{.javaScript}
+
 var name = "张三";      //定义全局变量
-alert(name)     
+alert(name)  
 alert(window.name);    //全局变量，最外围，属于window属性
 
-function setName(){      
-    return "李四";   
-} 
+function setName(){  
+    return "李四";  
+}  
 alert(setName());
-alert(window.setName()); //全局函数，最外围，属于window方法 
+alert(window.setName()); //全局函数，最外围，属于window方法  
 ```  
-- 变量没有在函数内声明或者声明的时候没有带var就是全局变量，拥有全局作用域,window对象的所有属性拥有全局作用域；在代码任何地方都可以访问，函数内部声明并且以var修饰的变量就是局部变量，只能在函数体内使用，函数的参数虽然没有使用var但仍然是局部变量。 
 
-```
+- 变量没有在函数内声明或者声明的时候没有带var就是全局变量，拥有全局作用域,window对象的所有属性拥有全局作用域；在代码任何地方都可以访问，函数内部声明并且以var修饰的变量就是局部变量，只能在函数体内使用，函数的参数虽然没有使用var但仍然是局部变量。
+
+```{.javaScript}
 var name = "张三";      //定义全局变量
 function setName(){  
     //var name= "李四";    //定义局部变量
@@ -181,11 +193,11 @@ function setName(){
 setName()
 alert(name);
 
-function setName(){ 
+function setName(){  
     var name="张三"  
-    function setYear(){ //setYear()方法的作用域在setName()内 
+    function setYear(){ //setYear()方法的作用域在setName()内  
     var age=21;
-    var str=name+age+'岁了' 
+    var str=name+age+'岁了'  
     return str;
     }  
     //alert(setYear())  
@@ -193,7 +205,7 @@ function setName(){
     return setYear()
 }
 setName()
-// alert(setYear()) 
+// alert(setYear())  
 alert(setName());
 
 ```  
@@ -201,7 +213,8 @@ alert(setName());
 - 内部环境可以访问所有的外部环境，但是外部环境不能访问内部环境中的任何变量和函数。  
 - 在变量的查询中，访问局部变量要比全局变量快。  
 
-### 内存管理
+### 内存管理  
+
 > JS中内存的分配和回收都是自动完成的，内存在不使用的时候会被垃圾回收器自动回收。 
 
 - 内存的生命周期,JS环境中分配的内存一般有如下生命周期:  
@@ -214,7 +227,8 @@ alert(setName());
 &emsp;&emsp;2.及时解除不再使用的变量引用,即将其赋值为 null;(在内存回收周期中，收回内存不是立即收回，浏览器每隔一段时间检查一次)  
 &emsp;&emsp;3.合理的使用函数，函数中的局部变量函数执行结束后就会自动释放内存。  
 
-### 全局函数
+### 全局函数  
+
 > 全局函数和属性可用于所有内建的 JavaScript 对象。全局函数又叫顶层函数或系统函数。  
 
 - parseInt() 函数可解析一个字符串，并返回一个整数。  
@@ -238,5 +252,4 @@ alert(setName());
 - isFinite() 检查某个值是否为无穷大的数。  
 如果 number 是有限数字（或可转换为有限数字），那么返回 true。否则，如果 number 是 NaN（非数字），或者是正、负无穷大的数，则返回 false。  
 &emsp;&emsp;Infinity无穷大（系统定义常量）  
-&emsp;&emsp;-Infinity无穷小（系统定义常量）
-
+&emsp;&emsp;-Infinity无穷小（系统定义常量）  
