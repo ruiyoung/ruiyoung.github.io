@@ -108,3 +108,22 @@ tags:
 &emsp;&emsp;语法：RegExpObject.source  
 &emsp;&emsp;source 属性用于返回模式匹配所用的文本。该文本不包括正则表达式直接量使用的定界符，也不包括标志 g、i、m。  
 - **lastIndex 一个整数，标示开始下一次匹配的字符位置。**  
+&emsp;&emsp;语法：RegExpObject.lastIndex  
+&emsp;&emsp;该属性存放一个整数，它声明的是上一次匹配文本之后的第一个字符的位置。多用于在一个字符串中进行多次匹配  
+&emsp;&emsp;上次匹配的结果是由方法 RegExp.exec() 和 RegExp.test() 找到的，它们都以 lastIndex 属性所指的位置作为下次检索的起始点。这样，就可以通过反复调用这两个方法来遍历一个字符串中的所有匹配文本。  
+&emsp;&emsp;不具有标志 g 和不表示全局模式的 RegExp 对象不能使用 lastIndex 属性。  
+
+#### RegExp 对象方法  
+
+- compile 编译正则表达式。  
+&emsp;&emsp;compile 方法将正则表达式转换为内部的格式，从而执行得更快。例如，这允许在循环中更有效地使用正则表达式。当重复使用相同的表达式时，编译过的正则表达式使执行加速。
+
+- test 检索字符串中指定的值。返回 true 或 false。
+&emsp;&emsp;语法：RegExpObject.test(string)  
+&emsp;&emsp;如果字符串 string 中含有与 RegExpObject 匹配的文本，则返回 true，否则返回 false。
+
+- exec 检索字符串中指定的值。返回找到的值，并确定其位置。
+&emsp;&emsp;如果 exec 方法没有找到匹配，将返回 null。如果找到匹配项，则 exec 方法返回一个数组。
+&emsp;&emsp;数组元素 0 包含了完整的匹配项，而元素 1 到 n 包含的是匹配项中出现的任意一个子匹配项。
+&emsp;&emsp;除了数组元素和 length 属性之外，exec() 方法还返回两个属性。index 属性声明的是匹配文本的第一个字符的位置。input 属性则存放的是被检索的字符串 string。在调用非全局的 RegExp 对象的 exec() 方法时，返回的数组与调用方法 String.match() 返回的数组是相同的。
+&emsp;&emsp;当 RegExpObject 是一个全局正则表达式时，exec() 会在 RegExpObject 的 lastIndex 属性指定的字符处开始检索字符串 string。当 exec() 找到了与表达式相匹配的文本时，在匹配后，它将把 RegExpObject 的 lastIndex 属性设置为匹配文本的最后一个字符的下一个位置。
